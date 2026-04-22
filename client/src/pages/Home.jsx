@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../assets/components/Navbar";
+import Navbar from "../components/Navbar";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import {
@@ -11,7 +11,7 @@ import {
 } from "react-icons/bs";
 import { HiSparkles } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import AuthModel from "../assets/components/AuthModel";
+import AuthModel from "../components/AuthModel";
 import evalImg from "../assets/ai-ans.png";
 import hrImg from "../assets/HR.png";
 import techImg from "../assets/tech.png";
@@ -20,7 +20,7 @@ import creditImg from "../assets/credit.png";
 import resumeImg from "../assets/resume.png";
 import pdfImg from "../assets/pdf.png";
 import analyticsImg from "../assets/history.png";
-import Footer from "../assets/components/Footer";
+import Footer from "../components/Footer";
 
 function Home() {
   const { userData } = useSelector((state) => state.user);

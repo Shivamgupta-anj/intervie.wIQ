@@ -1,27 +1,124 @@
-import jwt from "jsonwebtoken"
+// // // import jwt from "jsonwebtoken"
 
-const isAuth = async(req , res , next)=>{
-    try {
-        let {token}=req.cookies
+// // // const isAuth = async(req , res , next)=>{
+// // //     try {
+// // //         let {token}=req.cookies
 
-        if(!token){
-            return res.status(400).json({message:"user does not have a token"})
+// // //         if(!token){
+// // //             return res.status(400).json({message:"user does not have a token"})
 
-        }
-        const verifyToken = jwt.verify(token , process.env.JWT_SECRET)
+// // //         }
+// // //         const verifyToken = jwt.verify(token , process.env.JWT_SECRET)
 
-        if(!verifyToken){
-            return res.status(400).json({message:"user does not have a valid  token"})
+// // //         if(!verifyToken){
+// // //             return res.status(400).json({message:"user does not have a valid  token"})
 
-        }
-        req.userId = verifyToken.userId
-        next()
+// // //         }
+// // //         req.userId = verifyToken.userId
+// // //         next()
 
 
-    }catch(error){
-        return res.status(500).json({message:`isAuth auth Error ${error}`})
+// // //     }catch(error){
+// // //         return res.status(500).json({message:`isAuth auth Error ${error}`})
 
+// // //     }
+// // // }
+
+// // // export default isAuth
+
+// // import jwt from "jsonwebtoken";
+// // import cookieParser from "cookie-parser";
+
+// // // const isAuth = async (req, res, next) => {
+// // //   try {
+// // //     const token = req.cookies?.token;
+
+// // //     if (!token) {
+// // //       return res.status(401).json({ message: "No token provided. Please log in." });
+// // //     }
+
+// // //     const verifyToken = jwt.verify(token, process.env.JWT_SECRET);
+
+// // //     req.userId = verifyToken.userId;
+// // //     next();
+
+// // //   } catch (error) {
+// // //     if (error.name === "TokenExpiredError") {
+// // //       return res.status(401).json({ message: "Token has expired. Please log in again." });
+// // //     }
+// // //     if (error.name === "JsonWebTokenError") {
+// // //       return res.status(401).json({ message: "Invalid token. Please log in again." });
+// // //     }
+
+// // //     return res.status(500).json({ message: `Internal server error: ${error.message}` });
+// // //   }
+// // // };
+// // const isAuth = async (req, res, next) => {
+// //   try {
+// //     console.log("Cookies received:", req.cookies)  // ← add this
+// //     const token = req.cookies?.token;
+
+// //     if (!token) {
+// //       return res.status(401).json({ message: "No token provided" });
+// //     }
+
+// //     const verifyToken = jwt.verify(token, process.env.JWT_SECRET);
+// //     req.userId = verifyToken.userId;
+// //     next();
+
+// //   } catch (error) {
+// //     if (error.name === "TokenExpiredError") {
+// //       return res.status(401).json({ message: "Token expired" });
+// //     }
+// //     if (error.name === "JsonWebTokenError") {
+// //       return res.status(401).json({ message: "Invalid token" });
+// //     }
+// //     return res.status(500).json({ message: `Auth error: ${error.message}` });
+// //   }
+// // };
+
+// // export default isAuth;
+
+
+// import jwt from "jsonwebtoken";
+
+// const isAuth = (req, res, next) => {
+//   try {
+//     const token = req.cookies?.token;
+
+//     if (!token) {
+//       return res.status(401).json({ message: "No token provided" });
+//     }
+
+//     const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+//     req.userId = decoded.id; // ✅ FIXED (must match token payload)
+
+//     next();
+//   } catch (error) {
+//     return res.status(401).json({ message: "Invalid or expired token" });
+//   }
+// };
+
+// export default isAuth;
+import jwt from "jsonwebtoken";
+
+const isAuth = (req, res, next) => {
+  try {
+    const token = req.cookies?.token;
+
+    if (!token) {
+      return res.status(401).json({ message: "No token provided" });
     }
-}
 
-export default isAuth
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    req.userId = decoded.userId; // ✅ matches token.js { userId: userId }
+
+    next();
+  } catch (error) {
+    return res.status(401).json({ message: "Invalid or expired token" });
+  }
+};
+
+export default isAuth;

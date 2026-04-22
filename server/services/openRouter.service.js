@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const askAi = async (messages)=>{
     try {
+         
         if (!messages || !Array.isArray(messages) || messages.length=== 0) {
         throw new Error("Messages array is empty.");
     }
@@ -10,10 +11,17 @@ export const askAi = async (messages)=>{
         messages: messages
     },{
      headers: {
-    Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+    // Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
     
-    'Content-Type': 'application/json',
-  },});
+    // 'Content-Type': 'application/json',
+
+     Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+  "Content-Type": "application/json",
+  "HTTP-Referer": "http://localhost:5173",
+  "X-Title": "AI Interview App",
+  },
+
+});
 
   const content = response?.data?.choices?.[0]?.message?.content;
   if (!content || !content.trim()) {

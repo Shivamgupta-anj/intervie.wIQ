@@ -10,7 +10,8 @@ function InterviewPage() {
 
   const fetchInterviews = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/interview");
+      // const res = await axios.get("http://localhost:5000/api/interview");
+      const res = await axios.get("http://localhost:5000/interview");
       console.log(res.data);
       setInterviews(res.data);
     } catch (error) {
