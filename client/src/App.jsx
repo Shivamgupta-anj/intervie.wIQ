@@ -108,7 +108,7 @@ import InterviewPage from "./pages/InterviewPage";
 //  THIS LINE (FIXED IMPORT)
 import Step1SetUp from "./components/Step1SetUp";
 
-export const ServerUrl = "http://localhost:8000";
+export const ServerUrl = "http://localhost:5000";
 
 // ✅ Must be exactly this — no trailing slash
 // export const ServerUrl = "http://localhost:5000"

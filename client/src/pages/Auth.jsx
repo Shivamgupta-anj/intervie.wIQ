@@ -217,7 +217,7 @@ import {motion} from "framer-motion"
 import {FcGoogle} from "react-icons/fc"
 // const {signInWithPopup} = await import("firebase/auth")
 import { useNavigate } from "react-router-dom";
-import { signInWithPopup } from "firebase/auth"
+import { signInWithRedirect } from "firebase/auth"
 import {auth,provider} from "../utils/firebase"
 import axios from "axios"
 import { ServerUrl } from "../App";
@@ -226,13 +226,13 @@ function Auth (){
 
   const handleGoogleAuth = async()=>{
       try{
-        const response = await signInWithPopup(auth,provider)
+        const response = await signInWithRedirect(auth,provider)
         // console.log(response)
         let User = response.user
         let name = User.displayName
         let email = User.email
 
-        const result = await axios.post(ServerUrl+"/api/auth/google",{name,email},{withCredentials:true})
+        const result = await axios.post("http://localhost:5000/api/auth/google",{name,email},{withCredentials:true})
         console.log(result.data)
 
         //  navigate("/dashboard");

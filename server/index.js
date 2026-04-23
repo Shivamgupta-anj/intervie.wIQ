@@ -199,6 +199,7 @@ app.use(cookieParser()); // ✅ only once, after app is declared
 
 // ─── Routes ───────────────────────────────────────────────
 app.use("/api/auth", authRouter);
+// app.use("/api/auth/logout", authRouter);
 app.use("/api/user", userRouter);
 app.use("/api/interview", interviewRouter);
 
