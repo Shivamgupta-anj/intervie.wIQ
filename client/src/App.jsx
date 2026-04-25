@@ -94,7 +94,7 @@
 
 
 import React, { useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes ,useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setUserData } from "./redux/userSlice";
@@ -115,6 +115,7 @@ export const ServerUrl = "http://localhost:5000";
 
 function App() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getUser = async () => {
@@ -139,7 +140,10 @@ function App() {
       <Route path="/auth" element={<Auth />} />
 
       {/*  Step1 Page */}
-      <Route path="/interview" element={<Step1SetUp />} />
+      {/* <Route path="/interview" element={<Step1SetUp />} /> */}
+      <Route path="/interview" element={<Step1SetUp onStart={(data) => {
+  navigate("/interview/start", { state: data });
+}} />} />
 
       {/*  Interview Page */}
       <Route path="/interview/start" element={<InterviewPage />} />

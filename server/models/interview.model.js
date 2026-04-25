@@ -31,12 +31,10 @@ const interviewSchema = new mongoose.Schema({
         enum : ["HR","Technical"],
         required : true,
     },
-    resumeRexr:{
+    resumetext:{
         type : String,
     },
-    questions : [
-        questionSchema
-    ],
+     questions: [questionSchema],
     finalScore : {
         type : Number,
         default: 0,

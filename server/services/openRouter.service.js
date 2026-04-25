@@ -2,6 +2,7 @@ import axios from "axios";
 
 export const askAi = async (messages)=>{
     try {
+        console.log("KEY BEING USED:", process.env.OPENROUTER_API_KEY);
          
         if (!messages || !Array.isArray(messages) || messages.length=== 0) {
         throw new Error("Messages array is empty.");
