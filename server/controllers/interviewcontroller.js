@@ -243,7 +243,7 @@ export const submitAnswer = async (req, res) => {
       return res.status(404).json({ message: "Interview not found" });
     }
 
-    const question = interview.Questions[questionIndex];
+    const question = interview.questions[questionIndex];
     if (!question) {
       return res.status(404).json({ message: "Question not found" });
     }
