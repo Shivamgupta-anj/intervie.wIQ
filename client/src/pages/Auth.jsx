@@ -29,7 +29,7 @@ function Auth (){
         let name = User.displayName
         let email = User.email
 
-        const result = await axios.post("http://localhost:5000/api/auth/google",{name,email},{withCredentials:true})
+        const result = await axios.post("https://intervie-wiq.onrender.com/api/auth/google",{name,email},{withCredentials:true})
         // console.log(result.data)
 
         //  navigate("/dashboard");
