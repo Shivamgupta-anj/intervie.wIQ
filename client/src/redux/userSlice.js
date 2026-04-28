@@ -11,10 +11,13 @@ const userSlice = createSlice ({
             state.userData = action.payload
 
 
+        },
+        clearUser: (state) => {       // ✅ add this
+            state.userData = null
         }
     }
 })
 
-export const {setUserData}= userSlice.actions
+export const { setUserData, clearUser } = userSlice.actions 
 
 export default userSlice.reducer

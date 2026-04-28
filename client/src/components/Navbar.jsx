@@ -1,5 +1,6 @@
 import React, { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { clearUser } from "../redux/userSlice" 
 import { motion } from "framer-motion"
 import { BsRobot, BsCoin } from "react-icons/bs"
 import { HiOutlineLogout } from "react-icons/hi"
@@ -26,6 +27,7 @@ function Navbar() {
             })
 
             dispatch(setUserData(null))   
+            dispatch(clearUser()) 
             setShowCreditPopup(false)
             setShowUserPopup(false)
             navigate("/")
