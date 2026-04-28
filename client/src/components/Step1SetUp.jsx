@@ -13,7 +13,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { setUserData } from "../redux/userSlice";
 
-const ServerUrl = "http://localhost:5000";
+const ServerUrl = "https://intervie-wiq.onrender.com";
 function Step1SetUp({onStart}) {
   const navigate = useNavigate();
   const {userData}=useSelector((state)=>state.user);
