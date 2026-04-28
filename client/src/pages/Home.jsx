@@ -11,7 +11,7 @@ import {
 } from "react-icons/bs";
 import { HiSparkles } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
-import AuthModel from "../components/AuthModel";
+import AuthModel from "../components/authModel";
 import evalImg from "../assets/ai-ans.png";
 import hrImg from "../assets/HR.png";
 import techImg from "../assets/tech.png";
