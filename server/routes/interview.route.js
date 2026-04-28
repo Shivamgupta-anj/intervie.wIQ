@@ -47,7 +47,7 @@
 import express from "express";
 import isAuth from "../middlewares/isAuth.js";
 import { upload } from "../middlewares/multer.js";
-import { analyzeResume, generateQuestion, submitAnswer, finishInterview } from "../controllers/interviewcontroller.js";
+import { analyzeResume, generateQuestion, submitAnswer, finishInterview, getMyInterviews, getInterviewReport } from "../controllers/interviewcontroller.js";
 import User from "../models/usermodel.js"; // ← correct path
 
 const router = express.Router();
@@ -64,5 +64,8 @@ router.post("/resume", isAuth, upload.single("resume"), analyzeResume);
 router.post("/generate-questions", isAuth, generateQuestion);
 router.post("/submit-answer", isAuth, submitAnswer);
 router.post("/finish", isAuth, finishInterview);
+
+router.get("/get-interview", isAuth, getMyInterviews)
+router.get("/report/:id",isAuth,getInterviewReport)
 
 export default router;

@@ -44,6 +44,8 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import Step2Interview from "../components/Step2Interview";
+import Step1SetUp from "../components/Step1SetUp";
+import Step3Report from "../components/Step3Report"
 
 function InterviewPage() {
   const location = useLocation();
