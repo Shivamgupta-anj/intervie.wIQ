@@ -30,7 +30,7 @@ function Auth (){
         let email = User.email
 
         const result = await axios.post("https://intervie-wiq.onrender.com/api/auth/google",{name,email},{withCredentials:true})
-        // console.log(result.data)
+        
 
         //  navigate("/dashboard");
          dispatch(setUserData(result.data))  // ✅ save new user
