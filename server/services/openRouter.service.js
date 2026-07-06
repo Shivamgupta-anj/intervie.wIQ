@@ -8,7 +8,8 @@ export const askAi = async (messages)=>{
         throw new Error("Messages array is empty.");
     }
     const response = await axios.post("https://openrouter.ai/api/v1/chat/completions",{
-        model: "meta-llama/llama-3.1-8b-instruct:free",
+        // model: "meta-llama/llama-3.1-8b-instruct:free",
+        model: "poolside/laguna-xs-2.1:free",
         messages: messages
     },{
      headers: {
